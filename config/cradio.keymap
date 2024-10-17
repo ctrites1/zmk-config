@@ -23,8 +23,8 @@
 
 / {
     macros {
-        MACRO(vscsb, &kp LCTRL &kp B)
-        MACRO(vsctm, &kp LCTRL &kp TILDE)
+        MACRO(vscsb, &kp LC(B))
+        MACRO(vsctm, &kp LC(TILDE))
     };
 };
 
