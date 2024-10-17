@@ -23,8 +23,8 @@
 
 / {
     macros {
-        MACRO(vsc_sdbar, &kp LCTRL &kp B)
-        MACRO(vsc_term, &kp LCTRL &kp TILDE)
+        MACRO(vscsb, &kp LCTRL &kp B)
+        MACRO(vsctm, &kp LCTRL &kp TILDE)
     };
 };
 
@@ -97,7 +97,7 @@
         //│          │          │          │          │          │   │  &       │  _       │  +       │  │       │          │
             &trans     &trans     &trans     &trans     &trans         &kp AMPS   &kp UNDER  &kp PLUS   &kp PIPE   &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &trans         &trans     &trans
+                                             &trans     &trans        &mcr_vscsb &mcr_vsctm
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
