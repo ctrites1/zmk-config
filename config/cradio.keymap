@@ -106,10 +106,10 @@
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ RESET    │          │          │          │PROFILE 0 │   │          │Brtnss dn │Brtnss up │          │  RESET   │
-           &sys_reset  &trans     &trans     &tog 4    &bt BT_SEL 0    &trans    C_BRI_DN   C_BRI_UP    &trans    &sys_reset
+           &sys_reset  &trans     &trans     &tog 4    &bt BT_SEL 0    &trans   &kp C_BRI_DN &kp C_BRI_UP &trans  &sys_reset
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │Volume dn │Volume up │          │BOOTLOADER│
-          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &trans    C_VOL_DN   C_VOL_UP    &trans    &bootloader
+          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &trans   &kp C_VOL_DN &kp C_VOL_UP &trans  &bootloader
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
             &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &trans     &trans     &trans     &trans
