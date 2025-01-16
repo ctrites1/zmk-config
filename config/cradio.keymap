@@ -121,8 +121,8 @@
         gaming_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Tab     │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
-            &kp TAB    &kp Q      &kp W      &kp E      &kp R          &kp Y      &kp U      &kp I      &kp O      &kp P
+        //│  Tab     │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  EXIT    │
+            &kp TAB    &kp Q      &kp W      &kp E      &kp R          &kp Y      &kp U      &kp I      &kp O      &tog 4
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Shift   │  A       │  S       │  D       │  F       │   │  H       │  J       │  K       │  L       │ ' "      │
             &kp LSHFT  &kp A      &kp S      &kp D      &kp F          &kp H      &kp J      &kp K      &kp L      &kp SQT
