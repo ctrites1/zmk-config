@@ -7,7 +7,8 @@
 
 // Home row mods macro
 #define HRML(k1,k2,k3,k4) &ht LSHFT k1  &ht LALT k2  &ht LCTRL k3  &ht LGUI k4
-#define HRMR(k1,k2,k3,k4) &ht RGUI k1  &ht RCTRL k2  &ht RALT k3  &ht RSHFT k4
+// Modified right home row mods - removed mod from index finger (J key)
+#define HRMR(k1,k2,k3) &kp k1  &ht RCTRL k2  &ht RALT k3  &ht RSHFT SQT
 
 #define STRINGIFY(x) #x
 #define EXPAND_AND_STRINGIFY(x) STRINGIFY(x)
@@ -58,7 +59,7 @@
             &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │ ' "      │
-            HRML(A,        S,         D,         F)     &kp G          &kp H      HRMR(J,        K,         L,        SQT)
+            HRML(A,        S,         D,         F)     &kp G          &kp H      HRMR(J,        K,         L)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
@@ -74,11 +75,11 @@
         //│ INSERT   │  1       │  2       │  3       │          │   │ HOME     │ PAGE DN  │ PAGE UP  │ END      │  :       │
             &kp INS    &kp N1     &kp N2     &kp N3     &trans         &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp COLON
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ DELETE   │  4       │  5       │  6       │          │   │ LEFT     │ DOWN     │ UP       │ RIGHT    │  ;       │
-            &kp DEL    &kp N4     &kp N5     &kp N6     &trans         &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT   &kp SEMI
+        //│ DELETE   │  4       │  5       │  6       │ GAME MODE│   │ LEFT     │ DOWN     │ UP       │ RIGHT    │  ;       │
+            &kp DEL    &kp N4     &kp N5     &kp N6     &tog 4         &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT   &kp SEMI
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ CAPS     │  7       │  8       │  9       │  0       │   │          │          │          │          │          │
-           &caps_word  &kp N7     &kp N8     &kp N9     &kp N0         &trans     &trans     &trans     &trans     &trans
+        //│ CAPS     │  7       │  8       │  9       │  0       │   │ ESC      │ F1       │  F2      │  F3      │  F4      │
+           &caps_word  &kp N7     &kp N8     &kp N9     &kp N0         &kp ESC     &kp F1      &kp F2      &kp F3     &kp F4
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &kp ESC        &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -94,8 +95,8 @@
         //│  !       │  @       │  #       │  $       │  %       │   │  *       │  -       │  =       │  \       │  `       │
             &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp ASTRK  &kp MINUS  &kp EQUAL  &kp BSLH   &kp GRAVE
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │   │  &       │  _       │  +       │  │       │          │
-            &trans     &trans     &trans     &trans     &trans         &kp AMPS   &kp UNDER  &kp PLUS   &kp PIPE   &trans
+        //│          │          │          │          │GAME MODE │   │  &       │  _       │  +       │  │       │          │
+            &trans     &trans     &trans     &trans     &tog 4         &kp AMPS   &kp UNDER  &kp PLUS   &kp PIPE   &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans        &mcr_vscsb &mcr_vsctm
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -106,13 +107,13 @@
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ RESET    │          │          │          │PROFILE 0 │   │          │Brtnss dn │Brtnss up │          │  RESET   │
-           &sys_reset  &trans     &trans     &tog 4    &bt BT_SEL 0    &trans   &kp C_BRI_DN &kp C_BRI_UP &trans  &sys_reset
+           &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &trans   &kp C_BRI_DN &kp C_BRI_UP &trans  &sys_reset
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │Volume dn │Volume up │          │BOOTLOADER│
           &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &trans   &kp C_VOL_DN &kp C_VOL_UP &trans  &bootloader
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
-            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &trans     &trans     &trans     &trans
+        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │GAME MODE │          │          │          │
+            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &tog 4     &trans     &trans     &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans         &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -121,16 +122,33 @@
         gaming_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Tab     │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  EXIT    │
-            &kp TAB    &kp Q      &kp W      &kp E      &kp R          &kp Y      &kp U      &kp I      &kp O      &tog 4
+        //│  Tab     │  Q       │  W       │  E       │  R       │   │  T       │  1       │  2       │  3       │  EXIT    │
+            &kp TAB    &kp Q      &kp W      &kp E      &kp R          &kp T      &kp N1     &kp N2     &kp N3     &tog 4
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Shift   │  A       │  S       │  D       │  F       │   │  H       │  J       │  K       │  L       │ ' "      │
-            &kp LSHFT  &kp A      &kp S      &kp D      &kp F          &kp H      &kp J      &kp K      &kp L      &kp SQT
+        //│  Shift   │  A       │  S       │  D       │  F       │   │  G       │  4       │  5       │  6       │  ESC     │
+            &kp LSHFT  &kp A      &kp S      &kp D      &kp F          &kp G      &kp N4     &kp N5     &kp N6     &kp ESC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Ctrl    │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ R Alt    │
-            &kp LCTRL  &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp RALT
+        //│  Ctrl    │  Z       │  X       │  C       │  V       │   │  B       │  LALT    │  M       │ , <      │ . >      │
+            &kp LCTRL  &kp Z      &kp X      &kp C      &kp V          &kp B      &kp LALT   &kp M      &kp COMMA  &kp DOT
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                            &lt 2 TAB   &kp SPACE      &kp ENTER &lt 1 BSPC
+                                             &mo 5      &kp SPACE      &kp ENTER  &lt 1 BSPC
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+        
+        gaming_sublayer {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│  CAPS    │  F1      │  F2      │  F3      │  F4      │   │  F5      │  7       │  8       │  9       │  F10     │
+            &kp CAPS   &kp F1     &kp F2     &kp F3     &kp F4         &kp F5     &kp N7     &kp N8     &kp N9     &kp F10
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  `       │  I       │  O       │  P       │  RALT    │   │ GRAVE    │  0       │  -       │  =       │  \       │
+            &kp GRAVE  &kp I      &kp O      &kp P      &kp RALT       &kp GRAVE  &kp N0     &kp MINUS  &kp EQUAL  &kp BSLH
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  LALT    │  H       │  J       │  K       │  L       │   │ BSPC     │  DEL     │  [       │  ]       │  ;       │
+            &kp LALT   &kp H      &kp J      &kp K      &kp L          &kp BSPC   &kp DEL    &kp LBKT   &kp RBKT   &kp SEMI
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &trans     &kp SPACE      &kp ENTER  &tog 4
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
