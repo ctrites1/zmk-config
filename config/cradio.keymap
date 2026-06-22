@@ -112,13 +112,14 @@
         //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │Volume dn │Volume up │          │BOOTLOADER│
           &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &trans   &kp C_VOL_DN &kp C_VOL_UP &trans  &bootloader
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │GAME MODE │          │          │          │
-            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &tog 4     &trans     &trans     &trans
+        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │GAME MODE │ POE MODE │          │          │
+            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &tog 4     &tog 6     &trans     &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans         &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
-        };        
+        };
+
         gaming_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
@@ -131,11 +132,11 @@
         //│  Ctrl    │  Z       │  X       │  C       │  V       │   │  B       │  LALT    │  M       │ , <      │ . >      │
             &kp LCTRL  &kp Z      &kp X      &kp C      &kp V          &kp B      &kp LALT   &kp M      &kp COMMA  &kp DOT
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &mo 5      &kp SPACE      &kp ENTER  &lt 1 BSPC
+                                             &mo 5      &kp SPACE      &kp ENTER  &kp BSPC
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
-        
+
         gaming_sublayer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
@@ -152,5 +153,21 @@
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
+
+        poe_layer {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│  Q       │  W       │  E       │  R       │  T       │   │  Invntry │  Char    │  Passive │  Gems    │  EXIT    │
+            &kp Q      &kp W      &kp E      &kp R      &kp T          &kp I      &kp C      &kp P      &kp G      &tog 6
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  Flask 1 │  Flask 2 │  Ctrl    │  WpnSwap │  Pickup  │   │  Map     │  Esc     │  World   │  Chalng  │  Options │
+            &kp N1     &kp N2     &kp LCTRL  &kp X      &kp F          &kp TAB    &kp ESC    &kp U      &kp H      &kp O
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  Hilite  │  TogHilt │  Detonat │          │          │   │  Cosmtc  │  MtxLst  │  Events  │          │          │
+            &kp LALT   &kp Z      &kp D      &trans     &trans         &kp K      &kp N      &kp B      &trans     &trans
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &kp LSHFT  &kp SPACE      &kp ENTER  &kp BSPC
+        //                                 ╰─AtkPlace─┴──Dodge──╯   ╰──Chat────┴──BSPC───╯
+            >;
     };
 };
