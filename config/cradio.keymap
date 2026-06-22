@@ -169,5 +169,6 @@
                                              &kp LSHFT  &kp SPACE      &kp ENTER  &kp BSPC
         //                                 ╰─AtkPlace─┴──Dodge──╯   ╰──Chat────┴──BSPC───╯
             >;
+        };
     };
 };
