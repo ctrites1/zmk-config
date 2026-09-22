@@ -22,6 +22,10 @@
     bindings = <BINDINGS>; \
   };
 
+&lt {
+    quick-tap-ms = <175>;
+}
+
 / {
     macros {
         MACRO(vscsb, &kp LC(B))
